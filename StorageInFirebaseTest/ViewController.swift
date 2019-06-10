@@ -60,6 +60,7 @@ class ViewController: UIViewController {
             print(progress.fractionCompleted)
         }
         uploadTask.resume()
+        infoLabel.text = "url in storage :\n\(storageRef.description)"
     }
     
     override func viewDidLoad() {
