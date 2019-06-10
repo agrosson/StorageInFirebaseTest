@@ -1,0 +1,6 @@
+framework module Pods_StorageInFirebaseTest {
+  umbrella header "Pods-StorageInFirebaseTest-umbrella.h"
+
+  export *
+  module * { export * }
+}
