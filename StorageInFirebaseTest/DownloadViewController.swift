@@ -12,17 +12,18 @@ import Firebase
 
 class DownloadViewController: UIViewController {
 
-    var download:StorageDownloadTask!
+   // var download:StorageDownloadTask!
     
     @IBOutlet weak var imageViewDownload: UIImageView!
     
     @IBAction func getImageButtonPressed(_ sender: Any) {
+        var download:StorageDownloadTask!
         print("let's download")
         let storageRef = Storage.storage().reference().child("cover").child("MyTestImage.jpg")
         print(storageRef.description)
         DispatchQueue.main.async {
             print("let's be inside")
-            self.download = storageRef.getData(maxSize: 1024*1024*5, completion:  { [weak self] (data, error) in
+            download = storageRef.getData(maxSize: 1024*1024*5, completion:  { [weak self] (data, error) in
                 print("let's be inside download")
                 guard let data = data else {
                     print("no data here")
@@ -33,7 +34,7 @@ class DownloadViewController: UIViewController {
                 }
                 print("download succeeded !")
                 self!.imageViewDownload.image = UIImage(data: data)
-                self!.download.resume()
+                download.resume()
             })
         }
     }
